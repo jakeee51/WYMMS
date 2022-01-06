@@ -8,7 +8,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
   * One user must utter a specific phrase.
 * Box that can be opened by robot arm
 * Open box to drop red rose petals upon uttering phrase
-* Light up circle of rope lights before or upon uttering phrase (possibly manually)
+* Light up circle of rope lights when both devices are in close proximity
 
 ### Components:
 - [ ] Robot Arm
@@ -17,7 +17,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [ ] Red Rose Petals
 - [ ] Box with a lid
 - [ ] Batteries
-- [ ] Rope lights positioned as a circle (white or yellow)
+- [ ] Battery powered IOT Rope lights (white or yellow)
 - [ ] Something to strap robot arm to tree or above both parties
 - [ ] Something to handle communicating between robot arm and mobile app
 
