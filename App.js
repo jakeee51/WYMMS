@@ -2,6 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component, useState } from 'react';
 import { StyleSheet, TextInput, Text, View, Button } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [text, onChangeText] = useState();
@@ -13,12 +17,6 @@ const App = () => {
       style={styles.background}
       />
       <View style={{marginBottom: 500}}>
-        <TextInput
-          style={styles.textinput}
-          placeholder="Enter your name..."
-          onChangeText={onChangeText}
-          defaultValue={text}
-        />
         <Button
           color="gold"
           title="Start"
