@@ -10,14 +10,14 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 
 ### Components:
 - [x] Raspberry Pi
-- [ ] Robot Arm
+- [x] REST API to handle communicating data between electronics and mobile app
+- [x] Robot Arm
 - [ ] Battery powered IOT Rope lights (white or yellow)
 - [ ] Android & iOS compatible application with LikeAlert and speech recognition functionailities
 - [ ] Red Rose Petals
 - [ ] Box with a lid
 - [ ] Batteries
 - [ ] Something to strap robot arm to tree or somewhat hidden above both parties
-- [ ] Something to handle communicating between electronics and mobile app
 
 ### Workflow:
 * Create LikeAlert app for Android & iOS then put on her device
