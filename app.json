@@ -4,6 +4,14 @@
     "slug": "WYMMS",
     "version": "1.0.0",
     "android":{"softwareKeyboardLayoutMode": "pan"},
+    "ios": {
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

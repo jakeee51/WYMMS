@@ -1,6 +1,6 @@
 {
   "name": "wymms",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
@@ -23,7 +23,8 @@
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
     "expo-task-manager": "~10.1.0",
-    "expo-permissions": "~13.1.0"
+    "expo-permissions": "~13.1.0",
+    "expo-background-fetch": "~10.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

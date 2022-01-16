@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, Text, View, Button } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as Location from 'expo-location';
+import UserLocation from './UserLocation';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +12,7 @@ const MyStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
+          name="Main"
           component={MainScreen}
           options={{ title: 'LikeAlert' }}
         />
@@ -22,27 +22,6 @@ const MyStack = () => {
 };
 
 const MainScreen = ({ navigation }) => {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-  let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location.coords.latitude);
-    text += ", " + JSON.stringify(location.coords.longitude)
-  }
-
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -51,11 +30,7 @@ const MainScreen = ({ navigation }) => {
       style={styles.background}
       />
       <View style={{width: 250, marginBottom: 200}}>
-        <Button
-            color="gold"
-            title="Start"
-        />
-        <Text>{text}</Text>
+        <UserLocation />
       </View>
     </View>
   );
@@ -77,13 +52,5 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     height: 800,
-  },
-  textinput: {
-    borderWidth: 2,
-    borderColor: 'white',
-    backgroundColor: 'transparent',
-    fontSize: 36,
-    color: '#000',
-    padding: 25,
   },
 });
