@@ -1,6 +1,6 @@
 {
   "name": "wymms",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
@@ -15,6 +15,7 @@
     "expo-background-fetch": "~10.1.0",
     "expo-linear-gradient": "~11.0.0",
     "expo-location": "~14.0.1",
+    "expo-modules-autolinking": "^0.5.5",
     "expo-permissions": "~13.1.0",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",

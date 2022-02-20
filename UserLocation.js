@@ -10,7 +10,7 @@ function UserLocation() {
     const startLocationTracking = async () => {
             await Location.startLocationUpdatesAsync(LOCATION_TRACKING, {
                 accuracy: Location.Accuracy.Highest,
-                timeInterval: 5000,
+                timeInterval: 1000,
                 distanceInterval: 0,
             });
             const hasStarted = await Location.hasStartedLocationUpdatesAsync(
