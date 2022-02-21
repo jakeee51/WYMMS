@@ -2,8 +2,11 @@
   "expo": {
     "name": "WYMMS",
     "slug": "WYMMS",
-    "version": "1.0.3",
-    "android":{"softwareKeyboardLayoutMode": "pan"},
+    "version": "1.0.4",
+    "android": {
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.jakeee51.WYMMS"
+    },
     "ios": {
       "infoPlist": {
         "UIBackgroundModes": [

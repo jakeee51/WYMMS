@@ -20,42 +20,42 @@ function UserLocation() {
             console.log('tracking started?', hasStarted);
         };
     React.useEffect(() => {
-            const config = async () => {
-                let resf = await Location.requestForegroundPermissionsAsync();
-                let resb = await Location.requestBackgroundPermissionsAsync();
-                if (resf.status != 'granted' && resb.status !== 'granted') {
-                    console.log('Permission to access location was denied');
-                } else {
-                    console.log('Permission to access location granted');
-                }
-            };
-    config();
-        }, []);
+        const config = async () => {
+            let resf = await Location.requestForegroundPermissionsAsync();
+            let resb = await Location.requestBackgroundPermissionsAsync();
+            if (resf.status != 'granted' && resb.status !== 'granted') {
+                console.log('Permission to access location was denied');
+            } else {
+                console.log('Permission to access location granted');
+            }
+        };
+        config();
+    }, []);
     const startLocation = () => {
-            startLocationTracking();
-        }
+        startLocationTracking();
+    }
     const stopLocation = () => {
-            setLocationStarted(false);
-            TaskManager.isTaskRegisteredAsync(LOCATION_TRACKING)
-                .then((tracking) => {
-                    if (tracking) {
-                        Location.stopLocationUpdatesAsync(LOCATION_TRACKING);
-                    }
-                })
-        }
-    return (
-            <View>
-                {locationStarted ?
-                    <TouchableOpacity onPress={stopLocation}>
-                        <Text style={styles.btnText}>Stop Tracking</Text>
-                    </TouchableOpacity>
-                    :
-                    <TouchableOpacity onPress={startLocation}>
-                        <Text style={styles.btnText}>Start Tracking</Text>
-                    </TouchableOpacity>
+        setLocationStarted(false);
+        TaskManager.isTaskRegisteredAsync(LOCATION_TRACKING)
+            .then((tracking) => {
+                if (tracking) {
+                    Location.stopLocationUpdatesAsync(LOCATION_TRACKING);
                 }
-            </View>
-        );
+            })
+    }
+    return (
+        <View>
+            {locationStarted ?
+                <TouchableOpacity onPress={stopLocation}>
+                    <Text style={styles.btnText}>Stop Tracking</Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity onPress={startLocation}>
+                    <Text style={styles.btnText}>Start Tracking</Text>
+                </TouchableOpacity>
+            }
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

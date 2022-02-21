@@ -1,4 +1,4 @@
-package com.wymms;
+package com.jakeee51.WYMMS;
 
 import android.os.Build;
 import android.os.Bundle;
