@@ -58,6 +58,19 @@ function UserLocation() {
     );
 }
 
+TaskManager.defineTask(LOCATION_TRACKING, async ({ data, error }) => {
+    if (error) {
+        console.log('LOCATION_TRACKING task ERROR:', error);
+        return;
+    }
+    if (data) {
+        const { locations } = data;
+        let lat = locations[0].coords.latitude;
+        let long = locations[0].coords.longitude;
+        console.log(`${new Date(Date.now()).toLocaleString()}: ${lat},${long}`);
+    }
+});
+
 const styles = StyleSheet.create({
     btnText: {
         fontSize: 20,
@@ -68,19 +81,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 10,
     },
-});
-
-TaskManager.defineTask(LOCATION_TRACKING, async ({ data, error }) => {
-    if (error) {
-        console.log('LOCATION_TRACKING task ERROR:', error);
-        return;
-    }
-    if (data) {
-        const { locations } = data;
-        let lat = locations[0].coords.latitude;
-        let long = locations[0].coords.longitude;
-    console.log(`${new Date(Date.now()).toLocaleString()}: ${lat},${long}`);
-    }
 });
 
 export default UserLocation;
