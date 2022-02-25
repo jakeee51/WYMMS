@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
-// import { UserLocation } from './UserLocation';
+import Geolocation from 'react-native-geolocation-service';
 
 
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
@@ -31,6 +31,17 @@ const backgroundTask = async (taskData) => {
         console.log(BackgroundJob.isRunning(), delay)
         for (let i = 0; BackgroundJob.isRunning(); i++) {
             console.log('Runned -> ', i);
+            if (true) {
+                Geolocation.getCurrentPosition(
+                    (position) => {
+                      console.log(position.coords.latitude);
+                    },
+                    (error) => {
+                      console.log(error.code, error.message);
+                    },
+                    { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+                );
+              }
             await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
             await sleep(delay);
         }
