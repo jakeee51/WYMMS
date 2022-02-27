@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import {
     StyleSheet, Platform,
     View, TouchableOpacity, Linking
@@ -6,7 +6,7 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-
+import VoiceRecog from './VoiceService'
 
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
 BackgroundJob.on('expiration', () => {
@@ -25,10 +25,12 @@ const backgroundTask = async (taskData) => {
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
     }
+    var vr = new VoiceRecog();
+    vr.startRecognizing();
     await new Promise(async (resolve) => {
         // For loop with a delay
         const { delay } = taskData;
-        console.log(BackgroundJob.isRunning(), delay)
+        console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
             console.log('Runned -> ', i);
             if (true) {
@@ -62,7 +64,7 @@ const options = {
     },
 };
 
-class BackgroundService extends React.Component {
+class BackgroundService extends Component {
     playing = BackgroundJob.isRunning();
 
     toggleBackground = async () => {

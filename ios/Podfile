@@ -24,6 +24,8 @@ target 'WYMMS' do
 
   pod 'react-native-background-actions', :path => '../node_modules/react-native-background-actions'
 
+  pod 'react-native-voice', :path => '../node_modules/@react-native-voice/voice'
+
   post_install do |installer|
     react_native_post_install(installer)
 
