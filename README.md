@@ -5,8 +5,8 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 ### Features:
 * Trigger robot arm movement by uttering a specific phrase.
 * Box that can be opened by robot arm
-* Red rose petals drop upon uttering phrase
 * Light up circle of rope lights when both devices get within close proximity
+* Red rose petals drop upon uttering phrase
 
 ### Components:
 - [x] Raspberry Pi
