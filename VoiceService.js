@@ -1,4 +1,3 @@
-import { Image, TouchableHighlight } from 'react-native';
 import Voice from '@react-native-voice/voice';
 
 export default class VoiceRecog {
@@ -23,8 +22,10 @@ export default class VoiceRecog {
   }
 
   onSpeechResults = (e) => {
-    console.log('onSpeechResults: ', e);
+    console.log('onSpeechResults: ', e.value);
     this.state.results = e.value;
+    console.log(typeof(e.value));
+    
   };
 
   onSpeechPartialResults = (e) => {
@@ -58,7 +59,7 @@ export default class VoiceRecog {
     }
   };
 
-  _destroyRecognizer = async () => {
+  destroyRecognizer = async () => {
     try {
       await Voice.destroy();
     } catch (e) {
@@ -74,12 +75,4 @@ export default class VoiceRecog {
       partialResults: [],
     };
   };
-
-//   render() {
-//     return (
-//         <TouchableHighlight onPress={this.startRecognizing}>
-//           <Image source={require('./assets/like_alert.png')} />
-//         </TouchableHighlight>
-//     );
-//   }
 }

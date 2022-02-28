@@ -1,0 +1,7 @@
+import requests, json
+
+obj = {"user": "J", "loc": "[1,0]" , "pas": "S+J"}
+url = "https://LikeAlert.jakeee51.repl.co/setloc"
+resp = requests.post(url, data=obj)
+vals = json.loads(resp.text)
+print(vals)

@@ -1,12 +1,13 @@
 import { Component } from 'react';
 import {
-    StyleSheet, Platform,
+    StyleSheet, Platform, Image,
     View, TouchableOpacity, Linking
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
 import VoiceRecog from './VoiceService'
+
 
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
 BackgroundJob.on('expiration', () => {
@@ -18,6 +19,39 @@ function handleOpenURL(evt) {
 }
 Linking.addEventListener('url', handleOpenURL);
 
+const getLoc = () => {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("GETLOC:", xhr.responseText);
+        }
+    }
+    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/getloc', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("pas=S%2bJ");
+    return xhr.responseText;
+};
+
+const setLoc = (coords) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/setloc', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(`user=J&loc=${coords}&pas=S%2bJ`);
+    return xhr;
+};
+
+const compareLoc = (pair) => {
+    var lat1 = pair.S[0]; var lon1 = pair.S[1];
+    var lat2 = pair.J[0]; var lon2 = pair.J[1];
+    var ret = false;
+    console.log(`PAIR: ${lat2}, ${lon2}`);
+    var dist1 = Math.abs(lat1 - lat2);
+    var dist2 = Math.abs(lon1 - lon2);
+    if(dist1 <= .0009 || dist2 <= .0009)
+        ret = true;
+    return ret;
+};
+
 const backgroundTask = async (taskData) => {
     if (Platform.OS === 'ios') {
         console.warn(
@@ -28,23 +62,32 @@ const backgroundTask = async (taskData) => {
     var vr = new VoiceRecog();
     vr.startRecognizing();
     await new Promise(async (resolve) => {
-        // For loop with a delay
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
-            console.log('Runned -> ', i);
+            console.log("Runned -> ", i);
             if (true) {
                 Geolocation.getCurrentPosition(
                     (position) => {
-                      console.log(position.coords.latitude);
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        // console.log(latitude + ", " + longitude);
+                        var xhr = setLoc(JSON.stringify([latitude, longitude]));
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                // console.log("SETLOC:", xhr.responseText);
+                                compareLoc(JSON.parse(xhr.responseText));
+                                // if compareLoc == true then illuminate
+                            }
+                        }
                     },
                     (error) => {
-                      console.log(error.code, error.message);
+                        console.log(error.code, error.message);
                     },
                     { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
                 );
-              }
-            await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
+            }
+            // await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
             await sleep(delay);
         }
     });
@@ -60,7 +103,7 @@ const options = {
     color: '#ff00ff',
     linkingURI: 'com.jakeee51.wymms://getaud/getloc',
     parameters: {
-        delay: 1000,
+        delay: 5000,
     },
 };
 
@@ -84,10 +127,10 @@ class BackgroundService extends Component {
     };
     render() {
         return (
-            <View style={styles.body}>
+            <View>
                 <TouchableOpacity
-                style={{ height: 100, width: 100, backgroundColor: 'red' }}
                 onPress={this.toggleBackground}>
+                    <Image style={styles.button} source={require('./assets/like_alert.png')} />
                 </TouchableOpacity>
             </View>
         );
@@ -95,6 +138,10 @@ class BackgroundService extends Component {
 }
 
 const styles = StyleSheet.create({
+    button: {
+        width: 300,
+        height: 300        
+    },
     scrollView: {
         backgroundColor: Colors.lighter,
     },
