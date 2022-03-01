@@ -8,7 +8,6 @@ import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
 import VoiceRecog from './VoiceService'
 
-
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
 BackgroundJob.on('expiration', () => {
     console.log('iOS: I am being closed!');
@@ -57,9 +56,11 @@ const backgroundTask = async (taskData) => {
             'This task will not keep your app alive in the background by itself, use other library like react-native-track-player that use audio,',
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
+    } else {
+        var vr = new VoiceRecog();
+        vr.startRecognizing();
     }
-    var vr = new VoiceRecog();
-    vr.startRecognizing();
+    
     await new Promise(async (resolve) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
@@ -75,8 +76,9 @@ const backgroundTask = async (taskData) => {
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-                                compareLoc(JSON.parse(xhr.responseText));
-                                // if compareLoc == true then illuminate
+                                if(compareLoc(JSON.parse(xhr.responseText))) {
+                                    console.log("ACTIVATE OP YELLOW");
+                                }
                             }
                         }
                     },
