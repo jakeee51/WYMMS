@@ -15,7 +15,6 @@ BackgroundJob.on('expiration', () => {
 });
 function handleOpenURL(evt) {
     console.log(evt.url);
-    // do something with the url
 }
 Linking.addEventListener('url', handleOpenURL);
 

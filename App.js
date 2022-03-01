@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
-    StyleSheet, StatusBar,
-    Button, View, Text
+    StyleSheet, Button, View
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
@@ -33,7 +32,7 @@ const MainScreen = ({ navigation }) => {
       colors={['#00E4F1', 'transparent']}
       style={styles.background}
       />
-      <View style={{width: 200, marginBottom: 200}}>
+      <View style={{width: 200, marginBottom: 200, marginRight: 100}}>
         <BackgroundService />
       </View>
     </View>

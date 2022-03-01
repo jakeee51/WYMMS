@@ -1,5 +1,18 @@
 import Voice from '@react-native-voice/voice';
 
+const prp = () => {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+          console.log("PRP:", xhr.responseText);
+      }
+  }
+  xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/prp', true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("deed=done");
+  return xhr.responseText;
+};
+
 export default class VoiceRecog {
   state = {
     recognized: '',
@@ -22,10 +35,14 @@ export default class VoiceRecog {
   }
 
   onSpeechResults = (e) => {
-    console.log('onSpeechResults: ', e.value);
+    console.log("onSpeechResults: ");
     this.state.results = e.value;
-    console.log(typeof(e.value));
-    
+    for (let i = 0; i < e.value.length; i++) {
+      if (e.value[i].toLowerCase().includes("will you marry me")) {
+        console.log("ACTIVATE OP RED"); prp();
+        break;
+      }
+    }
   };
 
   onSpeechPartialResults = (e) => {
