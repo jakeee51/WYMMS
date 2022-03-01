@@ -13,7 +13,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] REST API to handle communicating data between electronics and mobile app (https://LikeAlert.jakeee51.repl.co)
 - [x] Robot Arm
 - [ ] Battery powered IOT Rope lights (white or yellow)
-- [ ] Android & iOS compatible application with LikeAlert and speech recognition functionailities
+- [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
 - [ ] Red Rose Petals
 - [ ] Box with a lid
 - [ ] Batteries
