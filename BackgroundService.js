@@ -6,7 +6,6 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-import VoiceRecog from './VoiceService'
 
 
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
@@ -58,8 +57,7 @@ const backgroundTask = async (taskData) => {
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
     }
-    var vr = new VoiceRecog();
-    vr.startRecognizing();
+
     await new Promise(async (resolve) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
