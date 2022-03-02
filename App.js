@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    StyleSheet, Button, View
+    StyleSheet, Button, View, Text
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
@@ -25,6 +25,8 @@ const MyStack = () => {
 };
 
 const MainScreen = ({ navigation }) => {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -33,8 +35,9 @@ const MainScreen = ({ navigation }) => {
       style={styles.background}
       />
       <View style={{width: 200, marginBottom: 200, marginRight: 100}}>
-        <BackgroundService />
+        <BackgroundService setCount={setCount} />
       </View>
+      <Text style={styles.text}>{count}</Text>
     </View>
   );
 };
@@ -54,6 +57,10 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 800,
     },
+    text: {
+      fontSize: 100,
+      textAlign: 'center'
+    }
 });
 
 export default MyStack;
