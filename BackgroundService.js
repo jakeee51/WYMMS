@@ -99,7 +99,7 @@ const setLoc = (coords) => {
     return xhr;
 };
 
-const compareLoc = (pair) => {
+const isTogether = (pair) => {
     var lat1 = pair.S[0]; var lon1 = pair.S[1];
     var lat2 = pair.J[0]; var lon2 = pair.J[1];
     var ret = false;
@@ -130,7 +130,7 @@ const backgroundTask = async (taskData) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
-            console.log("Runned -> ", i); setCount(i);
+            console.log("Runned -> ", i);
             if (true) {
                 Geolocation.getCurrentPosition(
                     (position) => {
@@ -141,8 +141,8 @@ const backgroundTask = async (taskData) => {
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-                                if(compareLoc(JSON.parse(xhr.responseText))) {
-                                    console.log("ACTIVATE OP YELLOW");
+                                if(isTogether(JSON.parse(xhr.responseText))) {
+                                    console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 }
                             }
                         }
