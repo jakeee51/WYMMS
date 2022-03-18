@@ -40,3 +40,6 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
       Then have that someone take them to me (holding other 2 roses) and voice listener ready.
       Before arriving have that someone's phone sneakily already be running the app
 - [ ] Do the thing
+
+### Development:
+* `sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer`

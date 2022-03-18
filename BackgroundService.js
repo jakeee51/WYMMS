@@ -142,6 +142,7 @@ const backgroundTask = async (taskData) => {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
                                 if(isTogether(JSON.parse(xhr.responseText))) {
+                                    // TODO - trigger sound
                                     console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 }
                             }
