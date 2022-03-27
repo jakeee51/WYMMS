@@ -10,7 +10,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 
 ### Components:
 - [x] Raspberry Pi
-- [x] REST API to handle communicating data between electronics and mobile app (https://LikeAlert.jakeee51.repl.co)
+- [x] REST API to handle communicating geolocation and other info (duck data) (https://LikeAlert.jakeee51.repl.co)
 - [x] Robot Arm
 - [ ] Battery powered IOT Rope lights (white or yellow)
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
@@ -23,6 +23,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [ ] Create LikeAlert app for Android & iOS then put on her device
 - [x] Create replit for hosting user data (may also handle robot arm communication) (https://replit.com/@jakeee51/LikeAlert)
 - [x] Implement speech recognition into LikeAlert (listen on button press)
+- [x] Implement bluetooth or internet communication between device and Raspberry Pi
 - [ ] Construct robot arm & attach Raspberry Pi
 - [ ] Get robot arm to move using Raspberry Pi
 - [ ] Get robot arm to move using voice by talking into LikeAlert (send information via bluetooth or API)
