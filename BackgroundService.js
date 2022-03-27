@@ -118,9 +118,10 @@ const backgroundTask = async (taskData) => {
             'This task will not keep your app alive in the background by itself, use other library like react-native-track-player that use audio,',
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
+    } else {
+        var vr = new VoiceRecog();
+        vr.startRecognizing();
     }
-    var vr = new VoiceRecog();
-    vr.startRecognizing();
     await new Promise(async (resolve) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
