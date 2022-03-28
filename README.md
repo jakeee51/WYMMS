@@ -21,7 +21,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 
 ### Workflow:
 - [ ] Create LikeAlert app for Android & iOS then put on her device
-- [x] Create replit for hosting user data (may also handle robot arm communication) (https://www.pythonanywhere.com/user/jakeee51/files/home/jakeee51/mysite/main.py)
+- [x] Create replit for hosting user data (may also handle robot arm communication) (https://www.pythonanywhere.com/user/jakeee51/files/home/jakeee51/mysite/main.py?edit)
 - [x] Implement speech recognition into LikeAlert (listen on button press)
 - [x] Implement bluetooth or internet communication between device and Raspberry Pi
 - [ ] Construct robot arm & attach Raspberry Pi
