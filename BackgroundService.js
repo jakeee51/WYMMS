@@ -10,6 +10,7 @@ import VoiceRecog from './VoiceService';
 import { sendBleCommand } from './BleService'; 
 
 
+var setCount;
 const URL = "http://jakeee51.pythonanywhere.com";
 const SLEEP = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
 
@@ -103,7 +104,7 @@ const setLoc = (coords) => {
     return xhr;
 };
 
-const compareLoc = (pair) => {
+const isTogether = (pair) => {
     var lat1 = pair.S[0]; var lon1 = pair.S[1];
     var lat2 = pair.J[0]; var lon2 = pair.J[1];
     var ret = false;
@@ -140,12 +141,12 @@ const backgroundTask = async (taskData) => {
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-                                if (compareLoc(JSON.parse(xhr.responseText))) {
+                                if (isTogether(JSON.parse(xhr.responseText))) {
                                     // TODO - Trigger noise/animation!
                                     sendBleCommand("LED", "ON");
-                                    console.log("ACTIVATE OP YELLOW");
+                                    console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 } else {
-                                    sendBleCommand("LED", "OFF");
+                                    sendBleCommand("LED", "OFF"); setCount(0);
                                 }
                             }
                         }
@@ -178,6 +179,10 @@ const options = {
 };
 
 class BackgroundService extends Component {
+    constructor(props) {
+        super();
+        setCount = props.setCount;
+    }
     playing = BackgroundJob.isRunning();
 
     toggleBackground = async () => {
