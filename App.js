@@ -80,6 +80,7 @@ const MainScreen = ({ navigation }) => {
       <View style={{width: 200, marginBottom: 200, marginRight: 100}}>
         <BackgroundService setCount={setCount} />
       </View>
+      <Text style={styles.text}>{count}</Text>
     </View>
   );
 };
