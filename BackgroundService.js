@@ -6,10 +6,12 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-import VoiceRecog from './VoiceService'
+import VoiceRecog from './VoiceService';
+import { sendBleCommand } from './BleService'; 
 
 
-const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
+const URL = "http://jakeee51.pythonanywhere.com";
+const SLEEP = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
 BackgroundJob.on('expiration', () => {
     console.log('iOS: I am being closed!');
 });
@@ -86,7 +88,7 @@ const getLoc = () => {
             console.log("GETLOC:", xhr.responseText);
         }
     }
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/getloc', true);
+    xhr.open("POST", URL + "/getloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("pas=S%2bJ");
     return xhr.responseText;
@@ -94,7 +96,7 @@ const getLoc = () => {
 
 const setLoc = (coords) => {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/setloc', true);
+    xhr.open("POST", URL + "/setloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`user=J&loc=${coords}&pas=S%2bJ`);
     return xhr;
@@ -119,6 +121,7 @@ const backgroundTask = async (taskData) => {
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
     } else {
+        // TODO - Put in loop to constantly listen
         var vr = new VoiceRecog();
         vr.startRecognizing();
     }
@@ -126,19 +129,23 @@ const backgroundTask = async (taskData) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
-            console.log("Runned -> ", i);
+            console.log("Iteration -> ", i);
             if (true) {
                 Geolocation.getCurrentPosition(
                     (position) => {
                         var latitude = position.coords.latitude;
                         var longitude = position.coords.longitude;
-                        // console.log(latitude + ", " + longitude);
                         var xhr = setLoc(JSON.stringify([latitude, longitude]));
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-                                compareLoc(JSON.parse(xhr.responseText));
-                                // if compareLoc == true then illuminate
+                                if (compareLoc(JSON.parse(xhr.responseText))) {
+                                    // TODO - Trigger noise/animation!
+                                    sendBleCommand("LED", "ON");
+                                    console.log("ACTIVATE OP YELLOW");
+                                } else {
+                                    sendBleCommand("LED", "OFF");
+                                }
                             }
                         }
                     },
@@ -149,7 +156,7 @@ const backgroundTask = async (taskData) => {
                 );
             }
             // await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
-            await sleep(delay);
+            await SLEEP(delay);
         }
     });
 };
