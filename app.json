@@ -13,7 +13,8 @@
           "location",
           "fetch"
         ]
-      }
+      },
+      "bundleIdentifier": "com.jakeee51.WYMMS"
     },
     "assetBundlePatterns": [
       "**/*"
