@@ -12,6 +12,7 @@ import { sendBleCommand } from './BleService';
 
 const URL = "http://jakeee51.pythonanywhere.com";
 const SLEEP = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
+
 BackgroundJob.on('expiration', () => {
     console.log('iOS: I am being closed!');
 });
