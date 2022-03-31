@@ -6,10 +6,12 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-import VoiceRecog from './VoiceService'
+
 
 var setCount;
+const URL = "http://jakeee51.pythonanywhere.com";
 const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
+
 BackgroundJob.on('expiration', () => {
     console.log('iOS: I am being closed!');
 });
@@ -17,6 +19,7 @@ function handleOpenURL(evt) {
     console.log(evt.url);
 }
 Linking.addEventListener('url', handleOpenURL);
+
 
 const hasPermissionIOS = async () => {
     const openSetting = () => {
@@ -44,7 +47,7 @@ const hasPermissionIOS = async () => {
     return false;
   };
 
-  const hasLocationPermission = async () => {
+const hasLocationPermission = async () => {
     if (Platform.OS === 'ios') {
       const hasPermission = await hasPermissionIOS();
       return hasPermission;
@@ -85,7 +88,7 @@ const getLoc = () => {
             console.log("GETLOC:", xhr.responseText);
         }
     }
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/getloc', true);
+    xhr.open("POST", URL + "/getloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("pas=S%2bJ");
     return xhr.responseText;
@@ -93,7 +96,7 @@ const getLoc = () => {
 
 const setLoc = (coords) => {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/setloc', true);
+    xhr.open("POST", URL + "/setloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`user=J&loc=${coords}&pas=S%2bJ`);
     return xhr;
@@ -121,28 +124,24 @@ const backgroundTask = async (taskData) => {
             'This task will not keep your app alive in the background by itself, use other library like react-native-track-player that use audio,',
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
-    } else {
-        var vr = new VoiceRecog();
-        vr.startRecognizing();
     }
 
     await new Promise(async (resolve) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
-            console.log("Runned -> ", i);
+            console.log("Iteration -> ", i);
             if (true) {
                 Geolocation.getCurrentPosition(
                     (position) => {
                         var latitude = position.coords.latitude;
                         var longitude = position.coords.longitude;
-                        // console.log(latitude + ", " + longitude);
                         var xhr = setLoc(JSON.stringify([latitude, longitude]));
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
                                 if(isTogether(JSON.parse(xhr.responseText))) {
-                                    // TODO - trigger sound
+                                    // TODO - Trigger noise/animation!
                                     console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 }
                             }
@@ -154,7 +153,6 @@ const backgroundTask = async (taskData) => {
                     { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
                 );
             }
-            // await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
             await sleep(delay);
         }
     });
