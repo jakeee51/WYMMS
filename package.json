@@ -1,6 +1,6 @@
 {
   "name": "wymms",
-  "version": "1.5.0",
+  "version": "1.9.0",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",

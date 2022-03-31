@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {
-    StyleSheet, Platform, Image,
-    View, TouchableOpacity, Linking
+    StyleSheet, Platform, Image, Alert,
+    View, TouchableOpacity, Linking, PermissionsAndroid
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';

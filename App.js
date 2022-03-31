@@ -100,6 +100,10 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 800,
     },
+    text: {
+      fontSize: 100,
+      textAlign: 'center'
+    }
 });
 
 export default MyStack;
