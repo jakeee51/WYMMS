@@ -6,9 +6,13 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-import VoiceRecog from './VoiceService'
+import VoiceRecog from './VoiceService';
+import { sendBleCommand } from './BleService'; 
 
-const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
+
+const URL = "http://jakeee51.pythonanywhere.com";
+const SLEEP = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
+
 BackgroundJob.on('expiration', () => {
     console.log('iOS: I am being closed!');
 });
@@ -17,6 +21,67 @@ function handleOpenURL(evt) {
 }
 Linking.addEventListener('url', handleOpenURL);
 
+
+const hasPermissionIOS = async () => {
+    const openSetting = () => {
+      Linking.openSettings().catch(() => {
+        Alert.alert('Unable to open settings');
+      });
+    };
+    const status = await Geolocation.requestAuthorization("always");
+    if (status === 'granted') {
+      return true;
+    }
+    if (status === 'denied') {
+      Alert.alert('Location permission denied');
+    }
+    if (status === 'disabled') {
+      Alert.alert(
+        `Turn on Location Services to allow "${appConfig.displayName}" to determine your location.`,
+        '',
+        [
+          { text: 'Go to Settings', onPress: openSetting },
+          { text: "Don't Use Location", onPress: () => {} },
+        ],
+      );
+    }
+    return false;
+  };
+
+const hasLocationPermission = async () => {
+    if (Platform.OS === 'ios') {
+      const hasPermission = await hasPermissionIOS();
+      return hasPermission;
+    }
+    if (Platform.OS === 'android' && Platform.Version < 23) {
+      return true;
+    }
+    const hasPermission = await PermissionsAndroid.check(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+    if (hasPermission) {
+      return true;
+    }
+    const status = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+    if (status === PermissionsAndroid.RESULTS.GRANTED) {
+      return true;
+    }
+    if (status === PermissionsAndroid.RESULTS.DENIED) {
+      ToastAndroid.show(
+        'Location permission denied by user.',
+        ToastAndroid.LONG,
+      );
+    } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+      ToastAndroid.show(
+        'Location permission revoked by user.',
+        ToastAndroid.LONG,
+      );
+    }
+    return false;
+  };
+
 const getLoc = () => {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -24,7 +89,7 @@ const getLoc = () => {
             console.log("GETLOC:", xhr.responseText);
         }
     }
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/getloc', true);
+    xhr.open("POST", URL + "/getloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("pas=S%2bJ");
     return xhr.responseText;
@@ -32,7 +97,7 @@ const getLoc = () => {
 
 const setLoc = (coords) => {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/setloc', true);
+    xhr.open("POST", URL + "/setloc", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(`user=J&loc=${coords}&pas=S%2bJ`);
     return xhr;
@@ -57,27 +122,30 @@ const backgroundTask = async (taskData) => {
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
     } else {
+        // TODO - Put in loop to constantly listen
         var vr = new VoiceRecog();
         vr.startRecognizing();
     }
-    
     await new Promise(async (resolve) => {
         const { delay } = taskData;
         console.log(BackgroundJob.isRunning(), delay);
         for (let i = 0; BackgroundJob.isRunning(); i++) {
-            console.log("Runned -> ", i);
+            console.log("Iteration -> ", i);
             if (true) {
                 Geolocation.getCurrentPosition(
                     (position) => {
                         var latitude = position.coords.latitude;
                         var longitude = position.coords.longitude;
-                        // console.log(latitude + ", " + longitude);
                         var xhr = setLoc(JSON.stringify([latitude, longitude]));
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-                                if(compareLoc(JSON.parse(xhr.responseText))) {
+                                if (compareLoc(JSON.parse(xhr.responseText))) {
+                                    // TODO - Trigger noise/animation!
+                                    sendBleCommand("LED", "ON");
                                     console.log("ACTIVATE OP YELLOW");
+                                } else {
+                                    sendBleCommand("LED", "OFF");
                                 }
                             }
                         }
@@ -89,10 +157,11 @@ const backgroundTask = async (taskData) => {
                 );
             }
             // await BackgroundJob.updateNotification({ taskDesc: 'Runned -> ' + i });
-            await sleep(delay);
+            await SLEEP(delay);
         }
     });
 };
+
 const options = {
     taskName: 'Listener',
     taskTitle: 'WYMMS Listener',

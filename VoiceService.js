@@ -1,4 +1,6 @@
 import Voice from '@react-native-voice/voice';
+import { sendBleCommand } from './BleService'; 
+
 
 const prp = () => {
   var xhr = new XMLHttpRequest();
@@ -7,7 +9,7 @@ const prp = () => {
           console.log("PRP:", xhr.responseText);
       }
   }
-  xhr.open("POST", 'https://LikeAlert.jakeee51.repl.co/prp', true);
+  xhr.open("POST", "http://jakeee51.pythonanywhere.com/prp", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("deed=done");
   return xhr.responseText;
@@ -38,9 +40,9 @@ export default class VoiceRecog {
     console.log("onSpeechResults: ");
     this.state.results = e.value;
     for (let i = 0; i < e.value.length; i++) {
-      if (e.value[i].toLowerCase().includes("will you marry me")) {
-        console.log("ACTIVATE OP RED"); prp();
-        break;
+      if (e.value[i].toLowerCase().includes("will you marry me") || e.value[i].toLowerCase().includes("code beta test")) {
+        sendBleCommand("ROBO", "RED"); prp();
+        console.log("ACTIVATE OP RED"); break;
       }
     }
   };
