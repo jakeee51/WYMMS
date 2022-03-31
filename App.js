@@ -78,7 +78,7 @@ const MainScreen = ({ navigation }) => {
       style={styles.background}
       />
       <View style={{width: 200, marginBottom: 200, marginRight: 100}}>
-        <BackgroundService />
+        <BackgroundService setCount={setCount} />
       </View>
     </View>
   );
