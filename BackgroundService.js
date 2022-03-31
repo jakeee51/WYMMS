@@ -117,6 +117,10 @@ const isTogether = (pair) => {
 };
 
 const backgroundTask = async (taskData) => {
+    const hasPermission = await hasLocationPermission();
+    if (!hasPermission) {
+      return;
+    }
     if (Platform.OS === 'ios') {
         console.warn(
             'This task will not keep your app alive in the background by itself, use other library like react-native-track-player that use audio,',
