@@ -26,9 +26,9 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Create replit for hosting user data (may also handle robot arm communication) (https://www.pythonanywhere.com/user/jakeee51/files/home/jakeee51/mysite/main.py?edit)
 - [x] Implement speech recognition into LikeAlert (listen on button press)
 - [x] Implement bluetooth or internet communication between device and Raspberry Pi
-- [ ] Construct robot arm & attach Raspberry Pi
-- [ ] Get robot arm to move using Raspberry Pi
-- [ ] Get robot arm to move using voice by talking into LikeAlert (send information via Bluetooth)
+- [x] Construct robot arm & attach Raspberry Pi
+- [x] Get robot arm to move using Raspberry Pi
+- [x] Get robot arm to move using voice by talking into LikeAlert (send information via Bluetooth)
 - [ ] Get rope lights or light strips & attach to Raspberry Pi
 - [ ] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
 - [ ] Get or make box that's easy to open
