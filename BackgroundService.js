@@ -105,6 +105,7 @@ const setLoc = (coords) => {
 };
 
 const isTogether = (pair) => {
+    // TODO - Improve accuracy
     var lat1 = pair.S[0]; var lon1 = pair.S[1];
     var lat2 = pair.J[0]; var lon2 = pair.J[1];
     var ret = false;
@@ -127,7 +128,6 @@ const backgroundTask = async (taskData) => {
             'geolocalization, etc. to keep your app alive in the background while you excute the JS from this library.'
         );
     } else {
-        // TODO - Put in loop to constantly listen
         var vr = new VoiceRecog();
         vr.startRecognizing();
     }
@@ -146,7 +146,6 @@ const backgroundTask = async (taskData) => {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
                                 if (isTogether(JSON.parse(xhr.responseText))) {
-                                    // TODO - Trigger noise/animation!
                                     sendBleCommand("LED", "ON");
                                     console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 } else {
