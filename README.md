@@ -16,7 +16,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [ ] Battery powered IOT Rope lights (white or yellow)
 - [ ] Red Rose Petals
 - [ ] Box with a lid
-- [ ] Batteries
+- [ ] Battery (9-10A, 5V)
 - [ ] Something to strap robot arm to tree or somewhat hidden above both parties
 
 ### Workflow:
