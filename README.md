@@ -30,7 +30,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Get robot arm to move using Raspberry Pi
 - [x] Get robot arm to move using voice by talking into LikeAlert (send information via Bluetooth)
 - [x] Order remote controlled or 3-pin battery powered rope lights
-- [ ] Get rope lights or light strips & attach to Raspberry Pi
+- [x] Get rope lights or light strips & attach to Raspberry Pi
 - [ ] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
 - [ ] Get or make box that's easy to open
 - [ ] Test in dev with shredded paper
