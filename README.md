@@ -13,10 +13,11 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] REST API to handle communicating geolocation and other info (duck data) (http://jakeee51.pythonanywhere.com/)
 - [x] Robot Arm
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
-- [x] Battery powered IOT Rope lights (white or yellow)
+- [x] Battery powered IOT Rope lights (white and or yellow)
+- [x] Battery (9-10A, 5V)
+- [ ] Battery (3A, 5.1V, 15.3W)
 - [ ] Red Rose Petals
 - [ ] Box with a lid
-- [ ] Battery (9-10A, 5V)
 - [ ] Something to strap robot arm to tree or somewhat hidden above both parties
 
 ### Workflow:
@@ -31,9 +32,11 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Get robot arm to move using voice by talking into LikeAlert (send information via Bluetooth)
 - [x] Order remote controlled or 3-pin battery powered rope lights
 - [x] Get rope lights or light strips & attach to Raspberry Pi
-- [ ] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
+- [x] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
+- [ ] Order battery for Raspberry Pi
+- [ ] Fasten components together
 - [ ] Get or make box that's easy to open
-- [ ] Test in dev with shredded paper
+- [ ] Test in dev with shredded paper and w/o Wifi
 - [ ] Order red rose petals
 - [ ] Acquire date, time, place
 - [ ] Acquire materials to bond project to tree
@@ -41,5 +44,5 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [ ] Setup: During setup have someone take her to ICPC for 3 roses.
       Then have that someone take them somewhere else as if it were just another hangout.
       Then have that someone take them to me (holding other 2 roses) and voice listener ready.
-      Before arriving have that someone's phone sneakily already be running the app
+      Before arriving, sneakily have that person's phone already be running the app
 - [ ] Do the thing
