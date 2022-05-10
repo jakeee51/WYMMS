@@ -13,7 +13,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] REST API to handle communicating geolocation and other info (duck data) (http://jakeee51.pythonanywhere.com/)
 - [x] Robot Arm
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
-- [x] Battery powered IOT Rope lights (white and or yellow)
+- [x] LED Rope Strip Lights (white and or yellow)
 - [x] Battery (9-10A, 5V)
 - [x] Battery (3A, 5.1V, 15.3W)
 - [ ] Red Rose Petals
