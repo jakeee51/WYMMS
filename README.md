@@ -15,7 +15,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
 - [x] Battery powered IOT Rope lights (white and or yellow)
 - [x] Battery (9-10A, 5V)
-- [ ] Battery (3A, 5.1V, 15.3W)
+- [x] Battery (3A, 5.1V, 15.3W)
 - [ ] Red Rose Petals
 - [ ] Box with a lid
 - [ ] Something to strap robot arm to tree or somewhat hidden above both parties
@@ -33,7 +33,7 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Order remote controlled or 3-pin battery powered rope lights
 - [x] Get rope lights or light strips & attach to Raspberry Pi
 - [x] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
-- [ ] Order battery for Raspberry Pi
+- [x] Order battery for Raspberry Pi
 - [ ] Fasten components together
 - [ ] Get or make box that's easy to open
 - [ ] Test in dev with shredded paper and w/o Wifi
