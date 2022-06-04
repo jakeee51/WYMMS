@@ -38,11 +38,11 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [ ] Get or make box that's easy to open
 - [ ] Test in dev with shredded paper and w/o Wifi
 - [ ] Order red rose petals
-- [ ] Acquire date, time, place
-- [ ] Acquire materials to bond project to tree
+- [x] Acquire date, time, place (7/2; Afternoon; Thrid Ward Park, Passaic NJ)
+- [ ] Acquire materials to bond project to tree (bungie cables?)
 - [ ] Test in stage
-- [ ] Setup: During setup have someone take her to ICPC for 3 roses.
-      Then have that someone take them somewhere else as if it were just another hangout.
-      Then have that someone take them to me (holding other 2 roses) and voice listener ready.
-      Before arriving, sneakily have that person's phone already be running the app
+- [ ] Setup: During setup have someone take her to ICPC for 1 rose.
+      Then have that someone take them "somewhere else" for pictures before the party.
+      Before arriving, sneakily have that person's phone already running the app.
+      The "somewhere else" would be to me (holding other 4 roses) and voice listener ready.
 - [ ] Do the thing
