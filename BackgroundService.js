@@ -122,7 +122,7 @@ const isTogether = (pair) => {
                 * Math.pow(Math.sin(dlon / 2), 2);
     let c = 2 * Math.asin(Math.sqrt(a));
 
-     // Radius of earth in miles. Use 6371 for kilometers
+    // Radius of earth in miles. Use 6371 for kilometers
     let R = 3956;
 
     let dist = c * R;
