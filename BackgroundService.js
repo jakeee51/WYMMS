@@ -105,15 +105,37 @@ const setLoc = (coords) => {
 };
 
 const isTogether = (pair) => {
-    // TODO - Improve accuracy
-    var lat1 = pair.S[0]; var lon1 = pair.S[1];
-    var lat2 = pair.J[0]; var lon2 = pair.J[1];
     var ret = false;
+    let lat1 = pair.S[0]; let lon1 = pair.S[1];
+    let lat2 = pair.J[0]; let lon2 = pair.J[1];
     console.log(`PAIR: ${lat2}, ${lon2}`);
-    var dist1 = Math.abs(lat1 - lat2);
-    var dist2 = Math.abs(lon1 - lon2);
-    if(dist1 <= .0009 || dist2 <= .0009)
+    lat1 = pair.S[0] * Math.PI / 180;
+    lon1 = pair.S[1] * Math.PI / 180;
+    lat2 = pair.J[0] * Math.PI / 180;
+    lon2 = pair.J[1] * Math.PI / 180;
+
+    // Haversine formula
+    let dlon = lon2 - lon1;
+    let dlat = lat2 - lat1;
+    let a = Math.pow(Math.sin(dlat / 2), 2)
+                + Math.cos(lat1) * Math.cos(lat2)
+                * Math.pow(Math.sin(dlon / 2), 2);
+    let c = 2 * Math.asin(Math.sqrt(a));
+
+     // Radius of earth in miles. Use 6371 for kilometers
+    let R = 3956;
+
+    let dist = c * R;
+    let feet = dist * 5280;
+    if (feet < 32.0)
         ret = true;
+
+    // var dist1 = Math.abs(lat1 - lat2);
+    // var dist2 = Math.abs(lon1 - lon2);
+    // if (dist1 <= .0009 || dist2 <= .0009)
+    //     ret = true;
+    console.log(`DIST: ${dist}`);
+    console.log(`FEET: ${feet}`);
     return ret;
 };
 

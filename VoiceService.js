@@ -44,6 +44,10 @@ export default class VoiceRecog {
         sendBleCommand("ROBO", "RED"); prp();
         console.log("ACTIVATE OP RED"); break;
       }
+      if (e.value[i].toLowerCase().includes("code beta reset")) {
+        sendBleCommand("ROBO", "RECALL");
+        break;
+      }
     }
   };
 
