@@ -2,13 +2,20 @@
   "expo": {
     "name": "WYMMS",
     "slug": "WYMMS",
+<<<<<<< Updated upstream
     "version": "1.5.0",
+=======
+    "version": "2.0.0",
+>>>>>>> Stashed changes
     "android": {
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.jakeee51.WYMMS"
     },
     "ios": {
       "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "YES",
+        "NSLocationAlwaysUsageDescription": "YES",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "YES",
         "UIBackgroundModes": [
           "location",
           "fetch"
