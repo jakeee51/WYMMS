@@ -6,11 +6,8 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-<<<<<<< Updated upstream
-=======
 import VoiceRecog from './VoiceService';
 // import { sendBleCommand } from './BleService'; 
->>>>>>> Stashed changes
 
 
 var setCount;
@@ -145,11 +142,6 @@ const backgroundTask = async (taskData) => {
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
-<<<<<<< Updated upstream
-                                if(isTogether(JSON.parse(xhr.responseText))) {
-                                    // TODO - Trigger noise/animation!
-                                    console.log("ACTIVATE OP YELLOW"); setCount(i);
-=======
                                 if (isTogether(JSON.parse(xhr.responseText))) {
                                     // sendBleCommand("LED", "ON");
                                     console.log("ACTIVATE OP YELLOW"); setCount(i);
@@ -157,7 +149,6 @@ const backgroundTask = async (taskData) => {
                                     // sendBleCommand("LED", "OFF");
                                     console.log("DEECTIVATE OP YELLOW"); setCount(0);
 
->>>>>>> Stashed changes
                                 }
                             }
                         }
