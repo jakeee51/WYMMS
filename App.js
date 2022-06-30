@@ -5,12 +5,9 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import BleManager from 'react-native-ble-manager';
 import BackgroundService from './BackgroundService'
 
 
-// const BleManagerModule = NativeModules.BleManager;
-// const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
