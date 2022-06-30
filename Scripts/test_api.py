@@ -1,6 +1,6 @@
 import requests, json
 
-obj = {"user": "J", "loc": "[1, 0]" , "pas": "S+J"}
+obj = {"user": "S", "loc": "[0, 1]" , "pas": "S+J"}
 ##obj = {"deed": "check"}
 
 url = "http://jakeee51.pythonanywhere.com/getloc"
