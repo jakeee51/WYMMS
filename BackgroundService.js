@@ -6,8 +6,6 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import BackgroundJob from 'react-native-background-actions';
 import Geolocation from 'react-native-geolocation-service';
-import VoiceRecog from './VoiceService';
-// import { sendBleCommand } from './BleService'; 
 
 
 var setCount;

@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import {
-    StyleSheet, Button, View, Text
+    StyleSheet, View, Text
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-<<<<<<< Updated upstream
-import BackgroundService from './BackgroundService'
-
-
-=======
 // import BleManager from 'react-native-ble-manager';
 import BackgroundService from './BackgroundService'
 
 
 // const BleManagerModule = NativeModules.BleManager;
 // const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
->>>>>>> Stashed changes
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -35,8 +29,6 @@ const MyStack = () => {
 
 const MainScreen = ({ navigation }) => {
   const [count, setCount] = useState(0);
-<<<<<<< Updated upstream
-=======
   const [list, setList] = useState([]);
   const peripherals = new Map();
 
@@ -77,7 +69,6 @@ const MainScreen = ({ navigation }) => {
   //     bleManagerEmitter.removeListener('BleManagerDidUpdateValueForCharacteristic', handleUpdateValueForCharacteristic );
   //   })
   // }, []);
->>>>>>> Stashed changes
 
   return (
     <View style={styles.container}>
