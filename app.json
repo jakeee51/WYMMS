@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "WYMMS",
-    "slug": "WYMMS",
+    "name": "LikeAlert",
+    "slug": "LikeAlert",
     "version": "2.0.0",
+    "icon": "C:\\Users\\jakem\\Documents\\GitHub\\WYMMS\\likealert_logo.png",
     "android": {
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.jakeee51.WYMMS"
@@ -23,5 +24,5 @@
       "**/*"
     ]
   },
-  "name": "WYMMS"
+  "name": "LikeAlert"
 }

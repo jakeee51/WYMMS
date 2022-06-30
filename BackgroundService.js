@@ -106,7 +106,7 @@ const isTogether = (pair) => {
     var lat1 = pair.S[0]; var lon1 = pair.S[1];
     var lat2 = pair.J[0]; var lon2 = pair.J[1];
     var ret = false;
-    console.log(`PAIR: ${lat2}, ${lon2}`);
+    console.log(`PAIR: ${lat1}, ${lon1}`);
     var dist1 = Math.abs(lat1 - lat2);
     var dist2 = Math.abs(lon1 - lon2);
     if(dist1 <= .0009 || dist2 <= .0009)
