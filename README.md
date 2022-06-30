@@ -34,12 +34,12 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Get rope lights or light strips & attach to Raspberry Pi
 - [x] Get lights to light up using geolocation of 2 devices with LikeAlert (send information via API & Bluetooth)
 - [x] Order battery for Raspberry Pi
-- [ ] Fasten components together
-- [ ] Get or make box that's easy to open
-- [ ] Test in dev with shredded paper and w/o Wifi
-- [ ] Order red rose petals
-- [x] Acquire date, time, place (7/2; Afternoon; Thrid Ward Park, Passaic NJ)
-- [ ] Acquire materials to bond project to tree (bungie cables?)
+- [x] Fasten components together
+- [x] Get or make box that's easy to open
+- [x] Test in dev with shredded paper and w/o Wifi
+- [x] Order red rose petals
+- [x] Acquire date, time, place (7/1; Afternoon; Thrid Ward Park, Passaic NJ)
+- [x] Acquire materials to bond project to tree (bungie cables?)
 - [ ] Test in stage
 - [ ] Setup: During setup have someone take her to ICPC for 1 rose.
       Then have that someone take them "somewhere else" for pictures before the party.
