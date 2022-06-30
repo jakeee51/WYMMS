@@ -2,7 +2,7 @@
   "expo": {
     "name": "WYMMS",
     "slug": "WYMMS",
-    "version": "1.9.8",
+    "version": "2.0.0",
     "android": {
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.jakeee51.WYMMS"
