@@ -30,12 +30,15 @@ while True:
       vals = json.loads(resp.text)
       print(vals)
    elif "get" in cmd:
+      runs = 1
       if re.search(r"get \d+", cmd):
          runs = int(cmd.split(' ')[1])
       for i in range(runs):
          resp = requests.post(get_url, data=obj)
          vals = json.loads(resp.text)
-         print(vals); time.sleep(5)
+         print(vals)
+         if runs > 1:
+            time.sleep(5)
    elif "prp" in cmd:
       args = cmd.split(' ')
       obj = {"deed": ""}
