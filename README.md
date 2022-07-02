@@ -16,9 +16,9 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] LED Rope Strip Lights (white and or yellow)
 - [x] Battery (9-10A, 5V)
 - [x] Battery (3A, 5.1V, 15.3W)
-- [ ] Red Rose Petals
-- [ ] Box with a lid
-- [ ] Something to strap robot arm to tree or somewhat hidden above both parties
+- [x] Red Rose Petals
+- [x] Box with a lid
+- [x] Something to strap robot arm to tree or somewhat hidden above both parties
 
 ### Workflow:
 - [x] Create LikeAlert app for Android & iOS
@@ -40,9 +40,11 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Order red rose petals
 - [x] Acquire date, time, place (7/1; Afternoon; Thrid Ward Park, Passaic NJ)
 - [x] Acquire materials to bond project to tree (bungie cables?)
-- [ ] Test in stage
+- [x] Test in stage
 - [ ] Setup: During setup have someone take her to ICPC for 1 rose.
       Then have that someone take them "somewhere else" for pictures before the party.
       Before arriving, sneakily have that person's phone already running the app.
       The "somewhere else" would be to me (holding other 4 roses) and voice listener ready.
-- [ ] Do the thing
+- [x] Do the thing
+
+- [x] Mission Accomplished
