@@ -11,11 +11,11 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 ### Components:
 - [x] Raspberry Pi
 - [x] REST API to handle communicating geolocation and other info (duck data) (http://jakeee51.pythonanywhere.com/)
-- [x] Robot Arm
+- [x] Robot Arm (https://www.waveshare.com/robot-arm-for-pi.htm)
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
-- [x] LED Rope Strip Lights (white and or yellow)
-- [x] Battery (9-10A, 5V)
-- [x] Battery (3A, 5.1V, 15.3W)
+- [x] LED Rope Strip Lights (white and or yellow) (https://www.amazon.com/dp/B00ZHB9M6A/ref=cm_sw_em_r_mt_dp_5TB8MHRBRVQR2DNHMAXQ?_encoding=UTF8&th=1)
+- [x] AA Battery (9-10A, 5V)
+- [x] Battery (3A, 5.1V, 15.3W) (https://www.amazon.com/dp/B09BNRKQD8?ref=ppx_yo2ov_dt_b_product_details&th=1)
 - [x] Red Rose Petals
 - [x] Box with a lid
 - [x] Something to strap robot arm to tree or somewhat hidden above both parties
