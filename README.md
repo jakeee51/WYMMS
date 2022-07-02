@@ -46,6 +46,3 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
       Before arriving, sneakily have that person's phone already running the app.
       The "somewhere else" would be to me (holding other 4 roses) and voice listener ready.
 - [x] Do the thing
-
-
-### - [x] Mission Accomplished
