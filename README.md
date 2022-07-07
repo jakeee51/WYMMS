@@ -11,14 +11,14 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 ### Components:
 - [x] Raspberry Pi
 - [x] REST API to handle communicating geolocation and other info (duck data) (http://jakeee51.pythonanywhere.com/)
-- [x] Robot Arm
+- [x] Robot Arm (https://www.waveshare.com/robot-arm-for-pi.htm)
 - [x] Android & iOS compatible application with LikeAlert and speech recognition functionailities
-- [x] LED Rope Strip Lights (white and or yellow)
-- [x] Battery (9-10A, 5V)
-- [x] Battery (3A, 5.1V, 15.3W)
-- [ ] Red Rose Petals
-- [ ] Box with a lid
-- [ ] Something to strap robot arm to tree or somewhat hidden above both parties
+- [x] LED Rope Strip Lights (white and or yellow) (https://www.amazon.com/dp/B00ZHB9M6A/ref=cm_sw_em_r_mt_dp_5TB8MHRBRVQR2DNHMAXQ?_encoding=UTF8&th=1)
+- [x] AA Battery (9-10A, 5V)
+- [x] Battery (3A, 5.1V, 15.3W) (https://www.amazon.com/dp/B09BNRKQD8?ref=ppx_yo2ov_dt_b_product_details&th=1)
+- [x] Red Rose Petals
+- [x] Box with a lid
+- [x] Something to strap robot arm to tree or somewhat hidden above both parties
 
 ### Workflow:
 - [x] Create LikeAlert app for Android & iOS
@@ -40,9 +40,9 @@ A mobile app for the WYMMS Project that triggers robot arm movements based on vo
 - [x] Order red rose petals
 - [x] Acquire date, time, place (7/1; Afternoon; Thrid Ward Park, Passaic NJ)
 - [x] Acquire materials to bond project to tree (bungie cables?)
-- [ ] Test in stage
+- [x] Test in stage
 - [ ] Setup: During setup have someone take her to ICPC for 1 rose.
       Then have that someone take them "somewhere else" for pictures before the party.
       Before arriving, sneakily have that person's phone already running the app.
       The "somewhere else" would be to me (holding other 4 roses) and voice listener ready.
-- [ ] Do the thing
+- [x] Do the thing
