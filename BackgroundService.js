@@ -108,7 +108,8 @@ const isTogether = (pair) => {
     var ret = false;
     let lat1 = pair.S[0]; let lon1 = pair.S[1];
     let lat2 = pair.J[0]; let lon2 = pair.J[1];
-    console.log(`PAIR: ${lat2}, ${lon2}`);
+    console.log(`PAIR 1: ${lat1}, ${lon1}`);
+    console.log(`PAIR 2: ${lat2}, ${lon2}`);
     lat1 = pair.S[0] * Math.PI / 180;
     lon1 = pair.S[1] * Math.PI / 180;
     lat2 = pair.J[0] * Math.PI / 180;
@@ -136,6 +137,7 @@ const isTogether = (pair) => {
     //     ret = true;
     console.log(`DIST: ${dist}`);
     console.log(`FEET: ${feet}`);
+    console.log(`ret: ${ret}`);
     return ret;
 };
 
@@ -168,10 +170,10 @@ const backgroundTask = async (taskData) => {
                             if (xhr.readyState == XMLHttpRequest.DONE) {
                                 // console.log("SETLOC:", xhr.responseText);
                                 if (isTogether(JSON.parse(xhr.responseText))) {
+                                    setCount(i); console.log("ACTIVATE OP YELLOW");
                                     sendBleCommand("LED", "ON");
-                                    console.log("ACTIVATE OP YELLOW"); setCount(i);
                                 } else {
-                                    sendBleCommand("LED", "OFF"); setCount(0);
+                                    setCount(0); sendBleCommand("LED", "OFF");
                                 }
                             }
                         }
